@@ -1,4 +1,5 @@
 const express = require("express");
+const auth = require("../middleware/auth");
 const router = express.Router();
 const Post = require("../models/Post");
 
@@ -14,7 +15,7 @@ router.get("/", async (req, res) => {
 });
 
 // Create a post
-router.post("/", async (req, res) => {
+router.post("/", auth, async (req, res) => {
   const post = new Post({
     title: req.body.title,
     description: req.body.description,

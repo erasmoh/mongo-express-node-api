@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
+const cors = require("cors");
 
 const user = process.env.MONGODB_USER;
 const password = process.env.MONGODB_PASS;
@@ -14,6 +15,7 @@ const database = process.env.MONGODB_DB;
 const User = require("./models/User");
 const auth = require("./middleware/auth");
 
+app.use(cors());
 app.use(express.json());
 
 // Import routes
